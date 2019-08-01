@@ -36,17 +36,17 @@ class ItunesSpider(scrapy.Spider):
             print_txt = "[Start ID] {}".format(i)
             print(print_txt)
 
-            # pxy = random.choice(PROXIES)
-            # request = FormRequest(
-            #     url=API,
-            #     method="GET",
-            #     callback=self.parse,
-            #     meta={
-            #         'proxy': pxy
-            #     }
-            # )
-            #
-            # yield request
+            pxy = random.choice(PROXIES)
+            request = FormRequest(
+                url=API,
+                method="GET",
+                callback=self.parse,
+                meta={
+                    'proxy': pxy
+                }
+            )
+
+            yield request
 
     def parse(self, response):
         json_parsed = json.loads(response.text)
